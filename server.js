@@ -39,9 +39,6 @@ function handleRender(req, res) {
   res.send(renderFullPage(html, finalState));
 }
 
-// TODO sync index.html from _src/_ and bundle.js from webpack across client and server
-// https://github.com/thegreenhouseio/docker-ssr/issues/1
-// https://github.com/thegreenhouseio/docker-ssr/issues/2
 function renderFullPage(html, preloadedState) {
   return `
       <!doctype html>
@@ -53,8 +50,6 @@ function renderFullPage(html, preloadedState) {
       <body>
           <div id="app">${html}</div>
           <script>
-          // WARNING: See the following for security issues around embedding JSON in HTML:
-          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
           </script>
           <script src="/static/bundle.js"></script>

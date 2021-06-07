@@ -33,8 +33,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
-      chunksSortMode: 'dependency'
+      template: './index.html'
     })
   ]
 

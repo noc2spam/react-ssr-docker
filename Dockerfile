@@ -1,13 +1,13 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.10
 
 # install express and babel packages globally
 # TODO allow for user defined presets / dependencies?  e.g. react
 # 
 RUN apt-get update \ 
-    && apt-get install -y curl vim git bzip2 ssh \
-    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt-get install -y curl nano vim git bzip2 ssh \
+    && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y nodejs \
-    && npm install -g yarn@^1.0.0 && yarn global add express@~4.16.3 @babel/core@~7.0.0 @babel/node@~7.0.0 @babel/preset-react@~7.0.0 @babel/preset-env@~7.0.0
+    && npm install -g yarn@^1.22.5 && yarn global add express@~4.17.1 @babel/core@~7.14.3 @babel/node@~7.14.2 @babel/preset-react@~7.13.13 @babel/preset-env@~7.14.1
 
 # mount the host workspace / repository to root of the container
 COPY . ./
